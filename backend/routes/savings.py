@@ -8,6 +8,28 @@ from backend.database.csv_handler import CSVHandler
 
 bp = Blueprint('savings', __name__, url_prefix='/api/savings')
 
+@bp.route('/summary', methods=['GET'])
+def get_summary():
+    """Get savings summary for user"""
+    try:
+        user_id = request.args.get('user_id', type=int)
+        
+        if not user_id:
+            return jsonify({'success': False, 'error': 'user_id required'}), 400
+        
+        portfolio = CSVHandler.get_investment_portfolio(user_id)
+        
+        return jsonify({
+            'success': True,
+            'summary': {
+                'total_invested': portfolio.get('total_invested', 0),
+                'potential_returns': portfolio.get('potential_returns', 0)
+            }
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 @bp.route('/roundup-total', methods=['GET'])
 def get_roundup_total():
     """Get total round-up savings"""

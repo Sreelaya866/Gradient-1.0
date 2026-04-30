@@ -392,12 +392,146 @@
 
     <script src="../static/js/script.js"></script>
     <script>
-        document.getElementById('goalForm').addEventListener('submit', function(e) {
+        document.addEventListener('DOMContentLoaded', async function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                window.location.href = '/login';
+                return;
+            }
+
+            // Update UI
+            document.getElementById('userInitial').textContent = user.name.charAt(0).toUpperCase();
+
+            await loadGoals(user.id);
+        });
+
+        async function loadGoals(userId) {
+            try {
+                const response = await fetch(`/api/savings/goals?user_id=${userId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    renderGoals(data.goals);
+                    updateStats(data.goals, data.progress);
+                }
+            } catch (error) {
+                console.error('Error loading goals:', error);
+            }
+        }
+
+        function renderGoals(goals) {
+            const activeContainer = document.querySelector('.goals-section:first-child .goals-list');
+            const completedContainer = document.querySelector('.goals-section:last-child .goals-list');
+            
+            activeContainer.innerHTML = '';
+            completedContainer.innerHTML = '';
+
+            goals.forEach(goal => {
+                const current = goal.saved_amount || 0;
+                const target = goal.target_amount || 0;
+                const progress = target > 0 ? (current / target) * 100 : 0;
+                const isCompleted = current >= target && target > 0;
+
+                if (isCompleted) {
+                    const html = `
+                        <div class="goal-card glass-effect completed">
+                            <div class="goal-card-header">
+                                <div class="goal-info">
+                                    <h3>${goal.goal_name}</h3>
+                                    <p class="goal-category">${goal.category || 'Savings'}</p>
+                                </div>
+                                <span class="badge">✓ Completed</span>
+                            </div>
+                            <p class="completed-date">Completed successfully</p>
+                            <p class="goal-amount">₹${target.toLocaleString()} saved</p>
+                        </div>
+                    `;
+                    completedContainer.innerHTML += html;
+                } else {
+                    const html = `
+                        <div class="goal-card glass-effect hover-lift">
+                            <div class="goal-card-header">
+                                <div class="goal-info">
+                                    <h3>${goal.goal_name}</h3>
+                                    <p class="goal-category">${goal.category || 'Savings'}</p>
+                                </div>
+                                <button class="btn-menu">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+
+                            <div class="goal-stats-bar">
+                                <span>₹${current.toLocaleString()} / ₹${target.toLocaleString()}</span>
+                                <span class="goal-percent">${Math.round(progress)}%</span>
+                            </div>
+
+                            <div class="progress-bar large">
+                                <div class="progress-fill" style="width: ${progress}%; background: linear-gradient(90deg, #FF6B6B, #FF8C82)"></div>
+                            </div>
+
+                            <div class="goal-timeline">
+                                <small><i class="fas fa-calendar"></i> Target: ${goal.deadline}</small>
+                            </div>
+
+                            <div class="goal-actions">
+                                <button class="btn-secondary btn-sm" onclick="showNotification('Feature coming soon!', 'info')">Add Funds</button>
+                            </div>
+                        </div>
+                    `;
+                    activeContainer.innerHTML += html;
+                }
+            });
+        }
+
+        function updateStats(goals, progress) {
+            const activeCount = goals.filter(g => (g.saved_amount || 0) < (g.target_amount || 0)).length;
+            const completedCount = goals.filter(g => (g.saved_amount || 0) >= (g.target_amount || 0)).length;
+            const totalSaved = goals.reduce((acc, g) => acc + (g.saved_amount || 0), 0);
+
+            const stats = document.querySelectorAll('.stat-value');
+            if (stats.length >= 4) {
+                stats[0].textContent = activeCount;
+                stats[1].textContent = completedCount;
+                stats[2].textContent = `₹${totalSaved.toLocaleString()}`;
+                stats[3].textContent = `${Math.round(progress)}%`;
+            }
+        }
+
+        document.getElementById('goalForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const goalName = document.getElementById('goalName').value;
-            showNotification(`✓ Goal "${goalName}" created successfully!`, 'success');
-            closeModal('newGoal');
-            this.reset();
+            const user = JSON.parse(localStorage.getItem('user'));
+            const goal_name = document.getElementById('goalName').value;
+            const target_amount = parseFloat(document.getElementById('goalAmount').value);
+            const deadline = document.getElementById('goalDeadline').value;
+            const category = document.getElementById('goalCategory').value;
+
+            try {
+                const response = await fetch('/api/savings/goals/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        user_id: user.id,
+                        goal_name,
+                        target_amount,
+                        deadline,
+                        category
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showNotification(`✓ Goal "${goal_name}" created successfully!`, 'success');
+                    closeModal('newGoal');
+                    this.reset();
+                    await loadGoals(user.id);
+                } else {
+                    showNotification(result.error || 'Failed to create goal', 'error');
+                }
+            } catch (error) {
+                console.error('Error creating goal:', error);
+                showNotification('An error occurred. Please try again.', 'error');
+            }
         });
 
         document.getElementById('fundForm').addEventListener('submit', function(e) {

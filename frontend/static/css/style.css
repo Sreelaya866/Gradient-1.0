@@ -2430,6 +2430,24 @@ body {
 
     .nav-menu.active {
         display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        gap: 20px;
+        margin: 0;
+        animation: slideInDown 0.3s ease forwards;
+    }
+
+    .nav-menu.active .nav-link {
+        font-size: 18px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
     }
 
     .hero-text h1 {

@@ -97,7 +97,7 @@
             </div>
 
             <div class="auth-footer">
-                <p>Already have an account? <a href="/login">Login</a></p>
+                <p>Already have an account? <a href="/login">Log In</a></p>
             </div>
         </div>
 
@@ -136,21 +136,43 @@
             strengthBar.textContent = strength > 60 ? '✓ Strong' : strength > 40 ? '◐ Medium' : '✗ Weak';
         });
 
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirm = document.getElementById('confirm').value;
+            const confirmPassword = document.getElementById('confirm').value;
 
-            if (password !== confirm) {
-                document.getElementById('confirmError').textContent = 'Passwords do not match!';
+            if (password !== confirmPassword) {
+                showNotification('Passwords do not match!', 'error');
                 return;
             }
 
-            localStorage.setItem('user', JSON.stringify({ id: Math.floor(Math.random() * 1000), name, email }));
-            showNotification('Account created successfully!', 'success');
-            setTimeout(() => window.location.href = 'dashboard.html', 500);
+            if (!document.getElementById('terms').checked) {
+                showNotification('Please accept the Terms of Service', 'warning');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    showNotification('Account created successfully!', 'success');
+                    setTimeout(() => window.location.href = '/dashboard', 1000);
+                } else {
+                    showNotification(result.error || 'Signup failed', 'error');
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                showNotification('An error occurred. Please try again.', 'error');
+            }
         });
 
         function calculatePasswordStrength(password) {

@@ -347,12 +347,74 @@
 
     <script src="../static/js/script.js"></script>
     <script>
-        function startHustle() {
-            const selected = document.querySelector('input[name="hustle"]:checked');
-            if (selected) {
-                showNotification(`✓ Great choice! Resources for ${selected.value} coming soon!`, 'success');
-                closeModal('startHustle');
+        document.addEventListener('DOMContentLoaded', async function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                window.location.href = '/login';
+                return;
             }
+
+            // Update UI
+            document.getElementById('userInitial').textContent = user.name.charAt(0).toUpperCase();
+
+            await loadRecommendations(user.id);
+            await loadEarningPotential(10);
+        });
+
+        async function loadRecommendations(userId) {
+            try {
+                const response = await fetch(`/api/side-hustles/recommendations?user_id=${userId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    renderHustles(data.recommendations);
+                }
+            } catch (error) {
+                console.error('Error loading recommendations:', error);
+            }
+        }
+
+        async function loadEarningPotential(hours) {
+            try {
+                const response = await fetch(`/api/side-hustles/earning-potential?hours_per_week=${hours}`);
+                const data = await response.json();
+                if (data.success) {
+                    document.querySelector('.opportunity-stats .stat-value').textContent = `₹${data.potential.toLocaleString()}/month`;
+                }
+            } catch (error) {
+                console.error('Error loading potential:', error);
+            }
+        }
+
+        function renderHustles(hustles) {
+            const container = document.querySelector('.hustles-grid');
+            container.innerHTML = '';
+
+            hustles.forEach(h => {
+                const html = `
+                    <div class="hustle-card glass-effect hover-lift" data-difficulty="${h.difficulty.toLowerCase()}">
+                        <div class="hustle-badge">AI Match: ${Math.floor(Math.random() * 20) + 80}%</div>
+                        <div class="hustle-icon">${h.icon || '💼'}</div>
+                        <h3>${h.title}</h3>
+                        <div class="hustle-meta">
+                            <span class="difficulty ${h.difficulty.toLowerCase()}">${h.difficulty}</span>
+                            <span class="time-commitment">${h.time_commitment} hrs/week</span>
+                        </div>
+                        <p class="hustle-desc">${h.description}</p>
+                        <div class="hustle-earnings">
+                            <small>Potential Earnings:</small>
+                            <p>${h.earnings}</p>
+                        </div>
+                        <div class="hustle-skills">
+                            ${h.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
+                        </div>
+                        <button class="btn btn-secondary btn-block" onclick="showNotification('Guide coming soon!', 'info')">
+                            Learn More
+                        </button>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
         }
 
         document.getElementById('searchHustle').addEventListener('input', function(e) {
@@ -368,10 +430,18 @@
             const level = e.target.value;
             const cards = document.querySelectorAll('.hustle-card');
             cards.forEach(card => {
-                const difficulty = card.querySelector('.difficulty').textContent.toLowerCase();
-                card.style.display = !level || difficulty.includes(level) ? '' : 'none';
+                const difficulty = card.getAttribute('data-difficulty');
+                card.style.display = !level || difficulty === level ? '' : 'none';
             });
         });
+
+        function startHustle() {
+            const selected = document.querySelector('input[name="hustle"]:checked');
+            if (selected) {
+                showNotification(`✓ Great choice! Resources for ${selected.value} coming soon!`, 'success');
+                closeModal('startHustle');
+            }
+        }
     </script>
 </body>
 </html>
