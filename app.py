@@ -3,7 +3,7 @@ AutoWealth Backend - Main Application Entry Point
 A Flask-based micro-investment platform backend
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from datetime import datetime
 import os
@@ -12,8 +12,10 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Initialize Flask app
-app = Flask(__name__)
+# Initialize Flask app with custom template and static folders
+app = Flask(__name__, 
+            template_folder='frontend/templates',
+            static_folder='frontend/static')
 CORS(app)
 
 # Configuration
@@ -31,6 +33,36 @@ app.register_blueprint(insights.bp)
 app.register_blueprint(side_hustles.bp)
 app.register_blueprint(i18n.bp)
 app.register_blueprint(alerts.bp)
+
+# Frontend Routes
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/goals')
+def goals():
+    return render_template('goals.html')
+
+@app.route('/side-hustles')
+def side_hustles_page():
+    return render_template('side_hustles.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 
 # Error handlers
 @app.errorhandler(404)
