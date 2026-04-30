@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AutoWealth</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-coins"></i>
+                <span>AutoWealth</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="side_hustles.html" class="nav-link">Opportunities</a>
+                <a href="goals.html" class="nav-link">Goals</a>
+            </div>
+            <div class="nav-actions">
+                <a href="profile.html" class="btn-profile active">
+                    <i class="fas fa-user"></i>
+                </a>
+                <button class="btn-info">
+                    <span id="userInitial">A</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="profile-page">
+        <!-- Profile Header -->
+        <section class="profile-header">
+            <div class="profile-card glass-effect">
+                <div class="profile-avatar">
+                    <span id="profileInitial">A</span>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profileName">Aisha Yadav</h1>
+                    <p id="profileEmail">aisha.yadav1@gmail.com</p>
+                    <p class="member-since">Member since 2024</p>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-secondary" onclick="openModal('editProfile')">Edit Profile</button>
+                    <button class="btn btn-secondary" onclick="alert('Logout coming soon!')">Logout</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <h3>₹85,200</h3>
+                    <p>Total Saved</p>
+                </div>
+                <div class="stat-item">
+                    <h3>₹28,900</h3>
+                    <p>Invested</p>
+                </div>
+                <div class="stat-item">
+                    <h3>47</h3>
+                    <p>Day Streak</p>
+                </div>
+                <div class="stat-item">
+                    <h3>₹14,250</h3>
+                    <p>This Month</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Content Tabs -->
+        <div class="profile-tabs">
+            <button class="tab-button active" onclick="switchTab('personal', this)">
+                <i class="fas fa-user"></i> Personal Info
+            </button>
+            <button class="tab-button" onclick="switchTab('financial', this)">
+                <i class="fas fa-wallet"></i> Financial Goals
+            </button>
+            <button class="tab-button" onclick="switchTab('settings', this)">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+            <button class="tab-button" onclick="switchTab('security', this)">
+                <i class="fas fa-shield"></i> Security
+            </button>
+        </div>
+
+        <!-- Personal Tab -->
+        <section id="personal-tab" class="tab-content active">
+            <div class="card glass-effect">
+                <h2>Personal Information</h2>
+                <form id="personalForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" value="Aisha" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" value="Yadav" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="aisha.yadav1@gmail.com" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" value="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" value="1995-06-15">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" value="Mumbai">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" value="Maharashtra">
+                    </div>
+                    <div class="form-group">
+                        <label for="occupation">Occupation</label>
+                        <input type="text" id="occupation" value="Software Engineer">
+                    </div>
+                </form>
+                <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+            </div>
+
+            <div class="card glass-effect">
+                <h2>Language Preference</h2>
+                <div class="language-options">
+                    <label class="language-option">
+                        <input type="radio" name="language" value="en" checked>
+                        <span>English</span>
+                    </label>
+                    <label class="language-option">
+                        <input type="radio" name="language" value="hi">
+                        <span>हिंदी (Hindi)</span>
+                    </label>
+                    <label class="language-option">
+                        <input type="radio" name="language" value="es">
+                        <span>Español (Spanish)</span>
+                    </label>
+                    <label class="language-option">
+                        <input type="radio" name="language" value="ta">
+                        <span>தமிழ் (Tamil)</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Tab -->
+        <section id="financial-tab" class="tab-content">
+            <div class="card glass-effect">
+                <h2>Financial Profile</h2>
+                <form id="financialForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="income">Monthly Income</label>
+                        <input type="number" id="income" value="50000">
+                    </div>
+                    <div class="form-group">
+                        <label for="savings">Current Savings</label>
+                        <input type="number" id="savings" value="85200" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="risk">Risk Appetite</label>
+                        <select id="risk">
+                            <option>Conservative</option>
+                            <option selected>Moderate</option>
+                            <option>Aggressive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="investExp">Investment Experience</label>
+                        <select id="investExp">
+                            <option selected>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                </form>
+                <button class="btn btn-primary" onclick="saveFinancial()">Update Profile</button>
+            </div>
+
+            <div class="card glass-effect">
+                <h2>Your Investment Portfolio</h2>
+                <div class="portfolio-summary">
+                    <div class="portfolio-item">
+                        <h3>Fixed Deposits</h3>
+                        <p class="amount">₹4,809</p>
+                        <span class="return">15% Returns</span>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>Mutual Funds</h3>
+                        <p class="amount">₹6,718</p>
+                        <span class="return">12% Returns</span>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>Digital Gold</h3>
+                        <p class="amount">₹4,750</p>
+                        <span class="return">8% Returns</span>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>ETFs</h3>
+                        <p class="amount">₹12,723</p>
+                        <span class="return">9% Returns</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Tab -->
+        <section id="settings-tab" class="tab-content">
+            <div class="card glass-effect">
+                <h2>Notification Settings</h2>
+                <div class="settings-list">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Daily Spending Alerts</h3>
+                            <p>Get notified about your daily spending</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="dailyAlert" checked>
+                            <label for="dailyAlert"></label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Goal Milestones</h3>
+                            <p>Celebrate when reaching goal milestones</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="goalMilestone" checked>
+                            <label for="goalMilestone"></label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Investment Tips</h3>
+                            <p>Weekly investment recommendations</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="investTips" checked>
+                            <label for="investTips"></label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Savings Tips</h3>
+                            <p>Personalized savings recommendations</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="savingsTips" checked>
+                            <label for="savingsTips"></label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Marketing Emails</h3>
+                            <p>Updates about new features and offers</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="marketing">
+                            <label for="marketing"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card glass-effect">
+                <h2>App Preferences</h2>
+                <div class="settings-grid">
+                    <div class="form-group">
+                        <label for="theme">Theme</label>
+                        <select id="theme">
+                            <option>Light (Default)</option>
+                            <option>Dark</option>
+                            <option>Auto</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency">
+                            <option selected>₹ Indian Rupee</option>
+                            <option>$ USD</option>
+                            <option>€ EUR</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+            </div>
+        </section>
+
+        <!-- Security Tab -->
+        <section id="security-tab" class="tab-content">
+            <div class="card glass-effect">
+                <h2>Password & Security</h2>
+                <form id="securityForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <div class="password-input">
+                            <input type="password" id="currentPassword" required>
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('currentPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <div class="password-input">
+                            <input type="password" id="newPassword" required>
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('newPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmNewPassword" required>
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmNewPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary" onclick="changePassword()">Update Password</button>
+            </div>
+
+            <div class="card glass-effect">
+                <h2>Two-Factor Authentication</h2>
+                <p class="section-description">Add an extra layer of security to your account</p>
+                <div class="security-status">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Enable 2FA via SMS or Authentication App</span>
+                </div>
+                <button class="btn btn-secondary" onclick="alert('2FA setup coming soon!')">Enable 2FA</button>
+            </div>
+
+            <div class="card glass-effect">
+                <h2>Active Sessions</h2>
+                <div class="sessions-list">
+                    <div class="session-item">
+                        <div class="session-info">
+                            <p class="device">Chrome on Windows 10</p>
+                            <small>Last active: Today at 2:45 PM</small>
+                        </div>
+                        <span class="badge">Current</span>
+                    </div>
+                    <div class="session-item">
+                        <div class="session-info">
+                            <p class="device">Safari on iPhone</p>
+                            <small>Last active: Yesterday at 9:30 AM</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="btn-close" onclick="closeModal('editProfile')">×</button>
+            </div>
+            <form id="editForm" class="modal-form">
+                <div class="form-group">
+                    <label for="modalPhone">Phone Number</label>
+                    <input type="tel" id="modalPhone" placeholder="+91 98765 43210">
+                </div>
+                <div class="form-group">
+                    <label for="modalCity">City</label>
+                    <input type="text" id="modalCity" placeholder="Mumbai">
+                </div>
+                <div class="form-group">
+                    <label for="modalOccupation">Occupation</label>
+                    <input type="text" id="modalOccupation" placeholder="Software Engineer">
+                </div>
+                <button class="btn btn-primary btn-block" onclick="saveEditModal()">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 AutoWealth. Building wealth for everyone.</p>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user')) || { name: 'Aisha Yadav', email: 'aisha.yadav1@gmail.com' };
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileEmail').textContent = user.email;
+            document.getElementById('profileInitial').textContent = user.name.charAt(0).toUpperCase();
+            document.getElementById('userInitial').textContent = user.name.charAt(0).toUpperCase();
+        });
+
+        function switchTab(tabName, button) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+            button.classList.add('active');
+        }
+
+        function saveProfile() {
+            showNotification('✓ Profile updated successfully!', 'success');
+        }
+
+        function saveFinancial() {
+            showNotification('✓ Financial profile updated!', 'success');
+        }
+
+        function saveSettings() {
+            showNotification('✓ Settings saved!', 'success');
+        }
+
+        function changePassword() {
+            const newPass = document.getElementById('newPassword').value;
+            const confirm = document.getElementById('confirmNewPassword').value;
+            if (newPass === confirm) {
+                showNotification('✓ Password changed successfully!', 'success');
+            } else {
+                showNotification('✗ Passwords do not match!', 'error');
+            }
+        }
+
+        function saveEditModal() {
+            showNotification('✓ Profile updated!', 'success');
+            closeModal('editProfile');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoWealth - Grow Your Wealth Automatically</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-coins"></i>
+                <span>AutoWealth</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="side_hustles.html" class="nav-link">Opportunities</a>
+                <a href="goals.html" class="nav-link">Goals</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-profile" onclick="window.location.href='profile.html'">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="btn-info" title="Current User">
+                    <span id="userInitial">A</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text slide-in-left">
+                <h1>Build Wealth <span class="gradient-text">Automatically</span></h1>
+                <p>AutoWealth helps you save, invest, and grow your money with AI-powered insights and micro-investments from your everyday spending.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='dashboard.html'">Get Started</button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('.features').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-visual slide-in-right">
+                <div class="floating-card card-1">
+                    <i class="fas fa-piggy-bank"></i>
+                    <p>₹2,450<br><small>Saved</small></p>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-chart-line"></i>
+                    <p>+15%<br><small>Growth</small></p>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-lightning-bolt"></i>
+                    <p>47 Days<br><small>Streak</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose AutoWealth?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-round-shape"></i>
+                </div>
+                <h3>Round-Up Savings</h3>
+                <p>Every purchase rounds up – ₹47 spent becomes ₹50, and ₹3 goes straight to savings.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI Insights</h3>
+                <p>Get personalized savings tips and investment suggestions based on your spending patterns.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Side Hustle Finder</h3>
+                <p>Discover gig opportunities and passive income sources tailored to your skills.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Smart Investments</h3>
+                <p>Low-risk investment suggestions from FDs to mutual funds, suitable for beginners.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Emergency Fund</h3>
+                <p>Build your safety net automatically with our guided emergency fund builder.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Financial Education</h3>
+                <p>Learn financial literacy through actionable insights and real-time recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <span class="stat-number" data-target="50000">0</span>
+            <p>Users Empowered</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="2500000">0</span>
+            <p>₹ Invested Together</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="18">0</span>
+            <p>% Average Growth</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="500">0</span>
+            <p>Gig Opportunities</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Start Your Wealth Journey?</h2>
+        <p>Join thousands building their financial future with AutoWealth</p>
+        <button class="btn btn-primary btn-large" onclick="window.location.href='signup.html'">Sign Up Free</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>AutoWealth</h4>
+                <p>Making wealth-building accessible to everyone.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Goals</a></li>
+                    <li><a href="#">Opportunities</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AutoWealth. All rights reserved. | Made with <i class="fas fa-heart"></i> for Financial Empowerment</p>
+        </div>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

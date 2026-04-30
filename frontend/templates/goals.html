@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Goals - AutoWealth</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-coins"></i>
+                <span>AutoWealth</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="side_hustles.html" class="nav-link">Opportunities</a>
+                <a href="goals.html" class="nav-link active">Goals</a>
+            </div>
+            <div class="nav-actions">
+                <a href="profile.html" class="btn-profile">
+                    <i class="fas fa-user"></i>
+                </a>
+                <button class="btn-info">
+                    <span id="userInitial">A</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="goals-page">
+        <!-- Header -->
+        <section class="page-header">
+            <h1>Your Savings Goals</h1>
+            <p>Track your progress towards financial goals and celebrate your achievements</p>
+            <button class="btn btn-primary" onclick="openModal('newGoal')">
+                <i class="fas fa-plus"></i> Create New Goal
+            </button>
+        </section>
+
+        <!-- Goals Overview -->
+        <section class="goals-stats">
+            <div class="stat-card glass-effect">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                    <h3>Active Goals</h3>
+                    <p class="stat-value">5</p>
+                </div>
+            </div>
+            <div class="stat-card glass-effect">
+                <div class="stat-icon">✓</div>
+                <div class="stat-content">
+                    <h3>Completed</h3>
+                    <p class="stat-value">2</p>
+                </div>
+            </div>
+            <div class="stat-card glass-effect">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <h3>Total Saved</h3>
+                    <p class="stat-value">₹85,200</p>
+                </div>
+            </div>
+            <div class="stat-card glass-effect">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <h3>Overall Progress</h3>
+                    <p class="stat-value">62%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals List -->
+        <section class="goals-container">
+            <!-- Active Goals -->
+            <div class="goals-section">
+                <h2>Active Goals</h2>
+                <div class="goals-list">
+                    <div class="goal-card glass-effect hover-lift">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>🏠 Home Renovation</h3>
+                                <p class="goal-category">Lifestyle</p>
+                            </div>
+                            <button class="btn-menu" onclick="alert('Coming soon!')">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+
+                        <div class="goal-stats-bar">
+                            <span>₹45,000 / ₹100,000</span>
+                            <span class="goal-percent">45%</span>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <div class="progress-fill" style="width: 45%; background: linear-gradient(90deg, #FF6B6B, #FF8C82)"></div>
+                        </div>
+
+                        <div class="goal-timeline">
+                            <small><i class="fas fa-calendar"></i> 8 months remaining</small>
+                            <small><i class="fas fa-zap"></i> ₹6,875/month needed</small>
+                        </div>
+
+                        <div class="goal-actions">
+                            <button class="btn-secondary btn-sm" onclick="openModal('editGoal')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="openModal('addFunds')">Add Funds</button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card glass-effect hover-lift">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>💻 New Laptop</h3>
+                                <p class="goal-category">Technology</p>
+                            </div>
+                            <button class="btn-menu" onclick="alert('Coming soon!')">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+
+                        <div class="goal-stats-bar">
+                            <span>₹36,150 / ₹50,000</span>
+                            <span class="goal-percent">72%</span>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <div class="progress-fill" style="width: 72%; background: linear-gradient(90deg, #4ECDC4, #44A08D)"></div>
+                        </div>
+
+                        <div class="goal-timeline">
+                            <small><i class="fas fa-calendar"></i> 3 months remaining</small>
+                            <small><i class="fas fa-zap"></i> ₹4,617/month needed</small>
+                        </div>
+
+                        <div class="goal-actions">
+                            <button class="btn-secondary btn-sm" onclick="openModal('editGoal')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="openModal('addFunds')">Add Funds</button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card glass-effect hover-lift">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>✈️ Vacation</h3>
+                                <p class="goal-category">Travel</p>
+                            </div>
+                            <button class="btn-menu" onclick="alert('Coming soon!')">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+
+                        <div class="goal-stats-bar">
+                            <span>₹28,500 / ₹75,000</span>
+                            <span class="goal-percent">38%</span>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <div class="progress-fill" style="width: 38%; background: linear-gradient(90deg, #45B7D1, #6C9ECC)"></div>
+                        </div>
+
+                        <div class="goal-timeline">
+                            <small><i class="fas fa-calendar"></i> 5 months remaining</small>
+                            <small><i class="fas fa-zap"></i> ₹9,300/month needed</small>
+                        </div>
+
+                        <div class="goal-actions">
+                            <button class="btn-secondary btn-sm" onclick="openModal('editGoal')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="openModal('addFunds')">Add Funds</button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card glass-effect hover-lift">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>🛡️ Emergency Fund</h3>
+                                <p class="goal-category">Security</p>
+                            </div>
+                            <button class="btn-menu" onclick="alert('Coming soon!')">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+
+                        <div class="goal-stats-bar">
+                            <span>₹8,200 / ₹20,000</span>
+                            <span class="goal-percent">41%</span>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <div class="progress-fill" style="width: 41%; background: linear-gradient(90deg, #95E1D3, #38ADA9)"></div>
+                        </div>
+
+                        <div class="goal-timeline">
+                            <small><i class="fas fa-calendar"></i> 12 months remaining</small>
+                            <small><i class="fas fa-zap"></i> ₹983/month needed</small>
+                        </div>
+
+                        <div class="goal-actions">
+                            <button class="btn-secondary btn-sm" onclick="openModal('editGoal')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="openModal('addFunds')">Add Funds</button>
+                        </div>
+                    </div>
+
+                    <div class="goal-card glass-effect hover-lift">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>📱 New Phone</h3>
+                                <p class="goal-category">Electronics</p>
+                            </div>
+                            <button class="btn-menu" onclick="alert('Coming soon!')">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+
+                        <div class="goal-stats-bar">
+                            <span>₹32,815 / ₹60,000</span>
+                            <span class="goal-percent">55%</span>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <div class="progress-fill" style="width: 55%; background: linear-gradient(90deg, #F7B801, #E8A60C)"></div>
+                        </div>
+
+                        <div class="goal-timeline">
+                            <small><i class="fas fa-calendar"></i> 4 months remaining</small>
+                            <small><i class="fas fa-zap"></i> ₹6,796/month needed</small>
+                        </div>
+
+                        <div class="goal-actions">
+                            <button class="btn-secondary btn-sm" onclick="openModal('editGoal')">Edit</button>
+                            <button class="btn-secondary btn-sm" onclick="openModal('addFunds')">Add Funds</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Goals -->
+            <div class="goals-section">
+                <h2>🎉 Completed Goals</h2>
+                <div class="goals-list">
+                    <div class="goal-card glass-effect completed">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>🎓 Online Course</h3>
+                                <p class="goal-category">Education</p>
+                            </div>
+                            <span class="badge">✓ Completed</span>
+                        </div>
+                        <p class="completed-date">Completed on April 15, 2026</p>
+                        <p class="goal-amount">₹15,000 saved</p>
+                    </div>
+
+                    <div class="goal-card glass-effect completed">
+                        <div class="goal-card-header">
+                            <div class="goal-info">
+                                <h3>🚴 Bike</h3>
+                                <p class="goal-category">Travel</p>
+                            </div>
+                            <span class="badge">✓ Completed</span>
+                        </div>
+                        <p class="completed-date">Completed on March 28, 2026</p>
+                        <p class="goal-amount">₹35,000 saved</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goal Tips -->
+        <section class="tips-section card glass-effect">
+            <h2>💡 Smart Tips for Goal Achievement</h2>
+            <div class="tips-grid">
+                <div class="tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Set Specific Targets</h3>
+                    <p>Clear goals with deadlines help you stay motivated and on track.</p>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress Weekly</h3>
+                    <p>Monitor your savings weekly to identify trends and adjust spending.</p>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-bell"></i>
+                    <h3>Set Reminders</h3>
+                    <p>Automated reminders help you stay committed to your financial goals.</p>
+                </div>
+                <div class="tip">
+                    <i class="fas fa-users"></i>
+                    <h3>Share Your Goals</h3>
+                    <p>Share goals with friends for accountability and motivation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="newGoalModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Create New Goal</h2>
+                <button class="btn-close" onclick="closeModal('newGoal')">×</button>
+            </div>
+            <form id="goalForm" class="modal-form">
+                <div class="form-group">
+                    <label for="goalName">Goal Name</label>
+                    <input type="text" id="goalName" required placeholder="e.g., Buy a Laptop">
+                </div>
+
+                <div class="form-group">
+                    <label for="goalCategory">Category</label>
+                    <select id="goalCategory" required>
+                        <option>Education</option>
+                        <option>Travel</option>
+                        <option>Electronics</option>
+                        <option>Lifestyle</option>
+                        <option>Emergency</option>
+                        <option>Investment</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="goalAmount">Target Amount (₹)</label>
+                    <input type="number" id="goalAmount" required placeholder="50000" step="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="goalDeadline">Target Date</label>
+                    <input type="date" id="goalDeadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="goalPriority">Priority</label>
+                    <select id="goalPriority">
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create Goal</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="addFundsModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Add Funds to Goal</h2>
+                <button class="btn-close" onclick="closeModal('addFunds')">×</button>
+            </div>
+            <form id="fundForm" class="modal-form">
+                <div class="form-group">
+                    <label for="fundAmount">Amount (₹)</label>
+                    <input type="number" id="fundAmount" required placeholder="0.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="fundSource">Source</label>
+                    <select id="fundSource">
+                        <option>Round-Up Savings</option>
+                        <option>Direct Transfer</option>
+                        <option>Bonus/Extra Income</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Funds</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 AutoWealth. Building wealth for everyone.</p>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        document.getElementById('goalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const goalName = document.getElementById('goalName').value;
+            showNotification(`✓ Goal "${goalName}" created successfully!`, 'success');
+            closeModal('newGoal');
+            this.reset();
+        });
+
+        document.getElementById('fundForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('fundAmount').value;
+            showNotification(`✓ Added ₹${amount} to your goal!`, 'success');
+            closeModal('addFunds');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

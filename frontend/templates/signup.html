@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AutoWealth</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <div class="auth-container reverse">
+        <div class="auth-box slide-in-up">
+            <div class="auth-header">
+                <i class="fas fa-coins"></i>
+                <h1>AutoWealth</h1>
+                <p>Start Your Wealth Journey</p>
+            </div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                    <small class="error-message" id="nameError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    <small class="error-message" id="emailError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" required placeholder="Min. 8 characters">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="confirm" name="confirm" required placeholder="•••••••••">
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirm')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <small class="error-message" id="confirmError"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Preferred Language</label>
+                    <select id="language">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="es">Español (Spanish)</option>
+                        <option value="fr">Français (French)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                    </select>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-loading">
+                    <span>Create Account</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+
+            <div class="social-login">
+                <button class="social-btn google" title="Sign up with Google">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </button>
+                <button class="social-btn github" title="Sign up with GitHub">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+
+        <div class="auth-visual slide-in-down">
+            <div class="visual-card">
+                <h2>Join the Wealth Revolution</h2>
+                <p>Thousands are already building their financial future.</p>
+                <div class="visual-features">
+                    <div class="visual-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>No hidden fees</span>
+                    </div>
+                    <div class="visual-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Start with just ₹0</span>
+                    </div>
+                    <div class="visual-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Bank-level security</span>
+                    </div>
+                    <div class="visual-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant verification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        document.getElementById('password').addEventListener('input', function() {
+            const strength = calculatePasswordStrength(this.value);
+            const strengthBar = document.getElementById('passwordStrength');
+            strengthBar.className = 'password-strength ' + (strength > 60 ? 'strong' : strength > 40 ? 'medium' : 'weak');
+            strengthBar.textContent = strength > 60 ? '✓ Strong' : strength > 40 ? '◐ Medium' : '✗ Weak';
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+
+            if (password !== confirm) {
+                document.getElementById('confirmError').textContent = 'Passwords do not match!';
+                return;
+            }
+
+            localStorage.setItem('user', JSON.stringify({ id: Math.floor(Math.random() * 1000), name, email }));
+            showNotification('Account created successfully!', 'success');
+            setTimeout(() => window.location.href = 'dashboard.html', 500);
+        });
+
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength += 20;
+            if (/[a-z]/.test(password)) strength += 20;
+            if (/[A-Z]/.test(password)) strength += 20;
+            if (/[0-9]/.test(password)) strength += 20;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 20;
+            return strength;
+        }
+    </script>
+</body>
+</html>

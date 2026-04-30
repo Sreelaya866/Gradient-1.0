@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Hustles - AutoWealth</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-coins"></i>
+                <span>AutoWealth</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="side_hustles.html" class="nav-link active">Opportunities</a>
+                <a href="goals.html" class="nav-link">Goals</a>
+            </div>
+            <div class="nav-actions">
+                <a href="profile.html" class="btn-profile">
+                    <i class="fas fa-user"></i>
+                </a>
+                <button class="btn-info">
+                    <span id="userInitial">A</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="side-hustles-page">
+        <!-- Header -->
+        <section class="page-header">
+            <h1>Earning Opportunities</h1>
+            <p>Discover AI-matched side hustles and passive income streams based on your skills</p>
+            <div class="header-filters">
+                <input type="search" id="searchHustle" placeholder="Search opportunities..." class="search-input">
+                <select id="difficultyFilter" class="filter-select">
+                    <option value="">All Levels</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="opportunity-stats">
+            <div class="stat-card glass-effect">
+                <i class="fas fa-briefcase"></i>
+                <h3>Your Potential Earnings</h3>
+                <p class="stat-value">₹15,000/month</p>
+                <small>Based on your skills</small>
+            </div>
+            <div class="stat-card glass-effect">
+                <i class="fas fa-star"></i>
+                <h3>Best Match Opportunities</h3>
+                <p class="stat-value">8</p>
+                <small>Personalized for you</small>
+            </div>
+            <div class="stat-card glass-effect">
+                <i class="fas fa-users"></i>
+                <h3>Users Already Earning</h3>
+                <p class="stat-value">12.4K+</p>
+                <small>On AutoWealth</small>
+            </div>
+        </section>
+
+        <!-- Recommended Hustles -->
+        <section class="hustles-section">
+            <h2>🎯 Top Recommendations for You</h2>
+            <div class="hustles-grid">
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 95%</div>
+                    <div class="hustle-icon">💻</div>
+                    <h3>Freelance Web Development</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty beginner">Beginner - Advanced</span>
+                        <span class="time-commitment">4-6 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Build websites and apps for clients on platforms like Upwork, Fiverr, or Toptal.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹1,000 - ₹5,000/project</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '1')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 92%</div>
+                    <div class="hustle-icon">✍️</div>
+                    <h3>Content Writing & Blogging</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="time-commitment">5-10 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Write articles, blog posts, and web content for websites and publications.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹500 - ₹2,000/article</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Writing</span>
+                        <span class="skill-tag">SEO</span>
+                        <span class="skill-tag">Research</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '2')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 88%</div>
+                    <div class="hustle-icon">🎨</div>
+                    <h3>Graphic Design & UI/UX</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="time-commitment">3-5 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Create designs for brands on Fiverr, 99designs, or design-specific platforms.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹2,000 - ₹8,000/project</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Adobe CC</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">UI Design</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '3')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 85%</div>
+                    <div class="hustle-icon">🗣️</div>
+                    <h3>Online Tutoring & Teaching</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="time-commitment">10-15 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Teach languages, academics, or skills on platforms like Chegg Tutors or VIPKid.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹300 - ₹1,500/hour</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Teaching</span>
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Math</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '4')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 80%</div>
+                    <div class="hustle-icon">📸</div>
+                    <h3>Stock Photography & Videos</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="time-commitment">Flexible</span>
+                    </div>
+                    <p class="hustle-desc">Sell your photos and videos on Shutterstock, Getty Images, or Adobe Stock.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹100 - ₹1,000/month/image</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Photography</span>
+                        <span class="skill-tag">Videography</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '5')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 78%</div>
+                    <div class="hustle-icon">📱</div>
+                    <h3>Virtual Assistant / Admin</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty beginner">Beginner</span>
+                        <span class="time-commitment">5-10 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Help entrepreneurs with administrative tasks and travel planning.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹8,000 - ₹15,000/month</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Admin</span>
+                        <span class="skill-tag">Organization</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '6')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 75%</div>
+                    <div class="hustle-icon">🛍️</div>
+                    <h3>E-commerce & Dropshipping</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty advanced">Advanced</span>
+                        <span class="time-commitment">8-12 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Set up online stores and sell products without holding inventory.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹5,000 - ₹50,000/month</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Marketing</span>
+                        <span class="skill-tag">Sales</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '7')">
+                        Learn More
+                    </button>
+                </div>
+
+                <div class="hustle-card glass-effect hover-lift">
+                    <div class="hustle-badge">AI Match: 72%</div>
+                    <div class="hustle-icon">🎙️</div>
+                    <h3>Podcast & YouTube Content</h3>
+                    <div class="hustle-meta">
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <span class="time-commitment">10-15 hours/week</span>
+                    </div>
+                    <p class="hustle-desc">Create content and earn through ads, sponsorships, and memberships.</p>
+                    <div class="hustle-earnings">
+                        <small>Potential Earnings:</small>
+                        <p>₹500 - ₹10,000/month</p>
+                    </div>
+                    <div class="hustle-skills">
+                        <span class="skill-tag">Audio</span>
+                        <span class="skill-tag">Video</span>
+                    </div>
+                    <button class="btn btn-secondary btn-block" onclick="openModal('hustleDetail', '8')">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Opportunities -->
+        <section class="hustles-section">
+            <h2>More Earning Opportunities</h2>
+            <div class="opportunities-table">
+                <div class="table-header">
+                    <div>Opportunity</div>
+                    <div>Difficulty</div>
+                    <div>Time</div>
+                    <div>Income</div>
+                    <div>Action</div>
+                </div>
+                <div class="table-row hover-highlight">
+                    <div>Data Entry</div>
+                    <div><span class="difficulty beginner">Easy</span></div>
+                    <div>2-4 hrs/week</div>
+                    <div>₹200-₹500/hr</div>
+                    <div><button class="btn-link" onclick="alert('Coming soon!')">Explore</button></div>
+                </div>
+                <div class="table-row hover-highlight">
+                    <div>Social Media Management</div>
+                    <div><span class="difficulty intermediate">Medium</span></div>
+                    <div>5-8 hrs/week</div>
+                    <div>₹300-₹800/hr</div>
+                    <div><button class="btn-link" onclick="alert('Coming soon!')">Explore</button></div>
+                </div>
+                <div class="table-row hover-highlight">
+                    <div>Affiliate Marketing</div>
+                    <div><span class="difficulty intermediate">Medium</span></div>
+                    <div>Flexible</div>
+                    <div>₹1,000-₹5,000/mo</div>
+                    <div><button class="btn-link" onclick="alert('Coming soon!')">Explore</button></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section card glass-effect">
+            <h2>Ready to Start Earning?</h2>
+            <p>Pick an opportunity that matches your skills and start building additional income today.</p>
+            <button class="btn btn-primary" onclick="openModal('startHustle')">Get Started Now</button>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="startHustleModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Choose Your First Hustle</h2>
+                <button class="btn-close" onclick="closeModal('startHustle')">×</button>
+            </div>
+            <div class="modal-form">
+                <p>Select which opportunity interests you most:</p>
+                <div style="margin: 20px 0;">
+                    <label style="display: block; margin: 10px 0; cursor: pointer;">
+                        <input type="radio" name="hustle" value="web-dev"> Freelance Web Development
+                    </label>
+                    <label style="display: block; margin: 10px 0; cursor: pointer;">
+                        <input type="radio" name="hustle" value="content"> Content Writing
+                    </label>
+                    <label style="display: block; margin: 10px 0; cursor: pointer;">
+                        <input type="radio" name="hustle" value="design"> Graphic Design
+                    </label>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="startHustle()">Get Resources</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 AutoWealth. Building wealth for everyone.</p>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        function startHustle() {
+            const selected = document.querySelector('input[name="hustle"]:checked');
+            if (selected) {
+                showNotification(`✓ Great choice! Resources for ${selected.value} coming soon!`, 'success');
+                closeModal('startHustle');
+            }
+        }
+
+        document.getElementById('searchHustle').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.hustle-card');
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                card.style.display = title.includes(query) ? '' : 'none';
+            });
+        });
+
+        document.getElementById('difficultyFilter').addEventListener('change', function(e) {
+            const level = e.target.value;
+            const cards = document.querySelectorAll('.hustle-card');
+            cards.forEach(card => {
+                const difficulty = card.querySelector('.difficulty').textContent.toLowerCase();
+                card.style.display = !level || difficulty.includes(level) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

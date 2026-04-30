@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AutoWealth</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>AutoWealth</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-coins"></i>
+                <span>AutoWealth</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="side_hustles.html" class="nav-link">Opportunities</a>
+                <a href="goals.html" class="nav-link">Goals</a>
+            </div>
+            <div class="nav-actions">
+                <a href="profile.html" class="btn-profile">
+                    <i class="fas fa-user"></i>
+                </a>
+                <button class="btn-info" title="Current User" id="userBtn">
+                    <span id="userInitial">A</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <!-- Welcome Section -->
+        <section class="dashboard-header">
+            <div class="header-content">
+                <h1>Welcome, <span id="userName">User</span>! 👋</h1>
+                <p id="greeting" class="greeting-message">Good morning! Here's your financial snapshot for today.</p>
+                <button class="btn btn-secondary btn-sm" onclick="exportToCSV()">
+                    <i class="fas fa-download"></i> Export to CSV
+                </button>
+            </div>
+            <div class="daily-alert">
+                <i class="fas fa-bell"></i>
+                <span id="dailyAlert">You've spent ₹345 today. Round-up saved: ₹15 🎯</span>
+            </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <section class="stats-grid">
+            <div class="stat-card glass-effect hover-lift">
+                <div class="stat-icon spent">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Spent</h3>
+                    <p class="stat-value">₹<span id="totalSpent">12,450</span></p>
+                    <small class="stat-change">↑ This week</small>
+                </div>
+            </div>
+
+            <div class="stat-card glass-effect hover-lift">
+                <div class="stat-icon saved">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Round-Up Saved</h3>
+                    <p class="stat-value">₹<span id="roundupSaved">2,450</span></p>
+                    <small class="stat-change">From spending</small>
+                </div>
+            </div>
+
+            <div class="stat-card glass-effect hover-lift">
+                <div class="stat-icon invested">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Invested</h3>
+                    <p class="stat-value">₹<span id="totalInvested">8,900</span></p>
+                    <small class="stat-change">+14% Returns</small>
+                </div>
+            </div>
+
+            <div class="stat-card glass-effect hover-lift">
+                <div class="stat-icon emergency">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Emergency Fund</h3>
+                    <p class="stat-value">₹<span id="emergencyFund">5,200</span></p>
+                    <small class="stat-change">25% Goal</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="section-title">Quick Actions</div>
+            <div class="actions-grid">
+                <button class="action-card" onclick="openModal('addExpense')">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Expense</span>
+                </button>
+                <button class="action-card" onclick="openModal('roundupCalc')">
+                    <i class="fas fa-calculator"></i>
+                    <span>Round-Up Calculator</span>
+                </button>
+                <button class="action-card" onclick="openModal('investSuggest')">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Investment Tips</span>
+                </button>
+                <button class="action-card" onclick="openModal('savingsTips')">
+                    <i class="fas fa-star"></i>
+                    <span>Savings Tips</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Expense Breakdown & Charts -->
+        <div class="dashboard-grid">
+            <!-- Expense Chart -->
+            <section class="card glass-effect">
+                <div class="card-header">
+                    <h2>Spending by Category</h2>
+                    <button class="btn-icon" title="More options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Monthly Trend -->
+            <section class="card glass-effect">
+                <div class="card-header">
+                    <h2>Monthly Trend</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </section>
+        </div>
+
+        <!-- Savings Goal Tracker -->
+        <section class="card glass-effect">
+            <div class="card-header">
+                <h2>Savings Goals</h2>
+                <a href="goals.html" class="link-btn">View All →</a>
+            </div>
+            <div class="goals-container">
+                <div class="goal-item">
+                    <div class="goal-header">
+                        <h3>Emergency Fund</h3>
+                        <span class="goal-amount">₹5,200 / ₹20,000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 26%"></div>
+                    </div>
+                    <small>26% complete • 8 months remaining</small>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-header">
+                        <h3>Laptop</h3>
+                        <span class="goal-amount">₹13,825 / ₹50,000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 27%"></div>
+                    </div>
+                    <small>27% complete • 6 months remaining</small>
+                </div>
+
+                <div class="goal-item">
+                    <div class="goal-header">
+                        <h3>Vacation</h3>
+                        <span class="goal-amount">₹28,500 / ₹75,000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 38%"></div>
+                    </div>
+                    <small>38% complete • 5 months remaining</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Expenses -->
+        <section class="card glass-effect">
+            <div class="card-header">
+                <h2>Recent Expenses</h2>
+                <button class="btn-icon" onclick="openModal('addExpense')">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="expenses-list">
+                <div class="expense-item">
+                    <div class="expense-icon food">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="expense-details">
+                        <p class="expense-name">Breakfast at Cafe</p>
+                        <small class="expense-date">Today • 8:30 AM</small>
+                    </div>
+                    <div class="expense-amount">
+                        <p>₹345</p>
+                        <small class="roundup">+₹5</small>
+                    </div>
+                </div>
+
+                <div class="expense-item">
+                    <div class="expense-icon travel">
+                        <i class="fas fa-taxi"></i>
+                    </div>
+                    <div class="expense-details">
+                        <p class="expense-name">Auto Ride</p>
+                        <small class="expense-date">Today • 9:15 AM</small>
+                    </div>
+                    <div class="expense-amount">
+                        <p>₹145</p>
+                        <small class="roundup">+₹5</small>
+                    </div>
+                </div>
+
+                <div class="expense-item">
+                    <div class="expense-icon shopping">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="expense-details">
+                        <p class="expense-name">Grocery Shopping</p>
+                        <small class="expense-date">Yesterday • 6:45 PM</small>
+                    </div>
+                    <div class="expense-amount">
+                        <p>₹2,250</p>
+                        <small class="roundup">+₹50</small>
+                    </div>
+                </div>
+
+                <div class="expense-item">
+                    <div class="expense-icon entertainment">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="expense-details">
+                        <p class="expense-name">Movie Ticket</p>
+                        <small class="expense-date">2 days ago • 7:00 PM</small>
+                    </div>
+                    <div class="expense-amount">
+                        <p>₹650</p>
+                        <small class="roundup">+₹50</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Streak & Badges -->
+        <section class="card glass-effect">
+            <div class="card-header">
+                <h2>Achievements</h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>47 Day Streak</h3>
+                    <p>Keep saving consistently!</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>First Thousand</h3>
+                    <p>Saved ₹1,000 via round-up</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Goal Master</h3>
+                    <p>3 goals in progress</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Early Bird</h3>
+                    <p>Invested in first week</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="addExpenseModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Add New Expense</h2>
+                <button class="btn-close" onclick="closeModal('addExpense')">×</button>
+            </div>
+            <form id="expenseForm" class="modal-form">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option>Food & Dining</option>
+                        <option>Travel</option>
+                        <option>Shopping</option>
+                        <option>Bills & Utilities</option>
+                        <option>Entertainment</option>
+                        <option>Health</option>
+                        <option>Education</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="merchant">Merchant/Shop Name</label>
+                    <input type="text" id="merchant" required placeholder="e.g., Starbucks">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount (₹)</label>
+                    <input type="number" id="amount" required placeholder="0.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Expense</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="roundupCalcModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Round-Up Calculator</h2>
+                <button class="btn-close" onclick="closeModal('roundupCalc')">×</button>
+            </div>
+            <div class="modal-form">
+                <div class="form-group">
+                    <label for="roundupAmount">Enter Amount</label>
+                    <div class="amount-input">
+                        <input type="number" id="roundupAmount" placeholder="0.00" step="0.01">
+                    </div>
+                </div>
+                <div class="roundup-result" id="roundupResult" style="display:none;">
+                    <p>Spent: ₹<span id="roundupSpent">0</span></p>
+                    <p>Rounded to: ₹<span id="roundupRounded">0</span></p>
+                    <p class="highlight">Saved: ₹<span id="roundupSave">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="investSuggestModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>Investment Suggestions</h2>
+                <button class="btn-close" onclick="closeModal('investSuggest')">×</button>
+            </div>
+            <div class="modal-form suggestions-list">
+                <div class="suggestion-card">
+                    <h3>Fixed Deposit (Medium Risk)</h3>
+                    <p>Safe, guaranteed returns of 6-7% annually</p>
+                    <small>Best for: Emergency funds</small>
+                </div>
+                <div class="suggestion-card">
+                    <h3>SIP Mutual Funds (Low-High Risk)</h3>
+                    <p>Regular small investments with flexibility</p>
+                    <small>Best for: Long-term growth</small>
+                </div>
+                <div class="suggestion-card">
+                    <h3>Gold/Digital Gold (Medium Risk)</h3>
+                    <p>Tangible asset with historical value</p>
+                    <small>Best for: Diversification</small>
+                </div>
+                <div class="suggestion-card">
+                    <h3>Index ETFs (Low-Medium Risk)</h3>
+                    <p>Linked to market indices, low-cost investing</p>
+                    <small>Best for: Passive income</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="savingsTipsModal" class="modal">
+        <div class="modal-content modal-animate">
+            <div class="modal-header">
+                <h2>AI Savings Tips</h2>
+                <button class="btn-close" onclick="closeModal('savingsTips')">×</button>
+            </div>
+            <div class="modal-form suggestions-list">
+                <div class="tip-card">
+                    <div class="tip-icon">💡</div>
+                    <h3>Cut Entertainment Spending by 30%</h3>
+                    <p>You spent ₹2,100 on entertainment this month. Reducing by 30% could save ₹630.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🍽️</div>
+                    <h3>Pack Lunch to Save ₹500/week</h3>
+                    <p>Your food spending is ₹35/day. Home-cooked meals cost ₹15/day.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🚗</div>
+                    <h3>Use Public Transport Thrice Weekly</h3>
+                    <p>Switch from auto to bus on 3 days/week to save ₹1,200/month.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3>Review Your Subscriptions</h3>
+                    <p>Unused streaming services cost ₹899/month. Cancel to boost savings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 AutoWealth. Building wealth for everyone.</p>
+    </footer>
+
+    <script src="../static/js/script.js"></script>
+    <script>
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initDashboard();
+            initCharts();
+            updateGreeting();
+        });
+
+        function initDashboard() {
+            const user = JSON.parse(localStorage.getItem('user')) || { name: 'User' };
+            document.getElementById('userName').textContent = user.name.split(' ')[0];
+            document.getElementById('userInitial').textContent = user.name.charAt(0).toUpperCase();
+        }
+
+        function initCharts() {
+            // Expense Chart
+            const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+            new Chart(expenseCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Food', 'Travel', 'Shopping', 'Bills', 'Entertainment', 'Other'],
+                    datasets: [{
+                        data: [2450, 1250, 3200, 2100, 1500, 2000],
+                        backgroundColor: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'],
+                        borderColor: '#fff',
+                        borderWidth: 2,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                font: { size: 12 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'This Week'],
+                    datasets: [{
+                        label: 'Spent',
+                        data: [3200, 2800, 3500, 2900, 3100],
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Saved',
+                        data: [320, 280, 350, 290, 310],
+                        borderColor: '#4ECDC4',
+                        backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        document.getElementById('expenseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const category = document.getElementById('category').value;
+            const merchant = document.getElementById('merchant').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const roundup = Math.ceil(amount) - amount;
+            
+            showNotification(`✓ Added ₹${amount.toFixed(2)} | Round-up saved: ₹${roundup.toFixed(2)}`, 'success');
+            closeModal('addExpense');
+            this.reset();
+        });
+
+        document.getElementById('roundupAmount').addEventListener('input', function() {
+            const amount = parseFloat(this.value) || 0;
+            const rounded = Math.ceil(amount);
+            const saved = rounded - amount;
+            
+            if (amount > 0) {
+                document.getElementById('roundupResult').style.display = 'block';
+                document.getElementById('roundupSpent').textContent = amount.toFixed(2);
+                document.getElementById('roundupRounded').textContent = rounded;
+                document.getElementById('roundupSave').textContent = saved.toFixed(2);
+            }
+        });
+
+        function exportToCSV() {
+            const data = 'Date,Category,Merchant,Amount,RoundUp\n' +
+                '2024-04-30,Food,Cafe,345,5\n' +
+                '2024-04-30,Travel,Uber,145,5\n' +
+                '2024-04-29,Shopping,Grocery,2250,50\n' +
+                '2024-04-28,Entertainment,Movie,650,50\n';
+            
+            const blob = new Blob([data], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'expenses.csv';
+            a.click();
+            showNotification('✓ Exported to CSV successfully!', 'success');
+        }
+    </script>
+</body>
+</html>
