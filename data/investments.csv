@@ -1,0 +1,301 @@
+investment_id,user_id,type,name,risk_level,amount_invested,avg_return
+1,30,Fixed Deposit,Secure FD,Medium,4809,15%
+2,119,Bonds,Govt Bond,Medium,7447,12%
+3,183,Gold,Digital Gold,Medium,43038,8%
+4,170,ETF,Index ETF,Low,34045,9%
+5,273,Mutual Fund,SIP Growth,High,89420,15%
+6,40,Bonds,Govt Bond,High,32995,15%
+7,114,Bonds,Govt Bond,Medium,46328,15%
+8,283,Stocks,Bluechip Basket,Medium,88743,14%
+9,244,Mutual Fund,SIP Growth,High,6718,12%
+10,200,ETF,Index ETF,High,68209,5%
+11,22,Stocks,Bluechip Basket,Low,16686,4%
+12,1,Bonds,Govt Bond,High,15883,5%
+13,171,Gold,Digital Gold,Low,89474,6%
+14,114,Stocks,Bluechip Basket,Medium,84534,6%
+15,274,Stocks,Bluechip Basket,Medium,11296,11%
+16,208,Mutual Fund,SIP Growth,Medium,36666,5%
+17,68,Stocks,Bluechip Basket,Medium,51925,8%
+18,106,Gold,Digital Gold,Low,72107,12%
+19,114,Fixed Deposit,Secure FD,Low,76100,18%
+20,104,ETF,Index ETF,Medium,25922,10%
+21,183,Fixed Deposit,Secure FD,Low,60117,9%
+22,270,Mutual Fund,SIP Growth,High,7737,12%
+23,83,Stocks,Bluechip Basket,Medium,46427,12%
+24,68,Bonds,Govt Bond,Medium,38057,11%
+25,87,Fixed Deposit,Secure FD,High,73287,14%
+26,246,Mutual Fund,SIP Growth,High,3750,4%
+27,118,Stocks,Bluechip Basket,High,39076,15%
+28,49,ETF,Index ETF,High,44209,8%
+29,145,Bonds,Govt Bond,Medium,78141,10%
+30,95,Gold,Digital Gold,High,72584,18%
+31,25,Mutual Fund,SIP Growth,Medium,72738,18%
+32,276,Bonds,Govt Bond,High,78917,9%
+33,230,Gold,Digital Gold,Medium,65683,9%
+34,143,ETF,Index ETF,Medium,18691,6%
+35,87,Stocks,Bluechip Basket,Medium,44039,14%
+36,48,ETF,Index ETF,Medium,17087,13%
+37,84,Mutual Fund,SIP Growth,High,44901,12%
+38,166,Fixed Deposit,Secure FD,Low,78466,11%
+39,41,Fixed Deposit,Secure FD,High,10495,5%
+40,4,Stocks,Bluechip Basket,Low,41891,8%
+41,50,Bonds,Govt Bond,Medium,32938,8%
+42,80,Mutual Fund,SIP Growth,High,39671,11%
+43,297,ETF,Index ETF,Low,36094,15%
+44,235,ETF,Index ETF,High,93200,18%
+45,196,Gold,Digital Gold,Medium,20768,14%
+46,288,Bonds,Govt Bond,High,48963,12%
+47,148,Bonds,Govt Bond,High,60947,6%
+48,218,Fixed Deposit,Secure FD,High,2511,13%
+49,113,Bonds,Govt Bond,Medium,31509,8%
+50,63,Stocks,Bluechip Basket,Medium,71514,13%
+51,167,Stocks,Bluechip Basket,Medium,44480,15%
+52,6,Mutual Fund,SIP Growth,High,45775,18%
+53,219,Stocks,Bluechip Basket,Low,14435,5%
+54,61,Mutual Fund,SIP Growth,Medium,16297,13%
+55,233,Bonds,Govt Bond,Medium,77612,13%
+56,206,Bonds,Govt Bond,High,35234,7%
+57,141,Fixed Deposit,Secure FD,Medium,39759,10%
+58,149,Bonds,Govt Bond,High,6270,8%
+59,153,Gold,Digital Gold,High,50550,7%
+60,208,Fixed Deposit,Secure FD,High,48038,4%
+61,130,Bonds,Govt Bond,Medium,50945,9%
+62,248,Stocks,Bluechip Basket,High,69376,14%
+63,199,Bonds,Govt Bond,Low,60771,17%
+64,50,Bonds,Govt Bond,High,84942,8%
+65,164,Bonds,Govt Bond,Low,53949,5%
+66,22,Mutual Fund,SIP Growth,High,72884,16%
+67,53,Stocks,Bluechip Basket,High,84657,7%
+68,209,ETF,Index ETF,Low,95233,18%
+69,120,Stocks,Bluechip Basket,High,41736,11%
+70,204,Stocks,Bluechip Basket,Medium,32132,9%
+71,171,Mutual Fund,SIP Growth,Medium,26583,10%
+72,262,Gold,Digital Gold,Low,36776,7%
+73,168,Fixed Deposit,Secure FD,Low,3431,13%
+74,90,Mutual Fund,SIP Growth,Medium,33001,11%
+75,201,Mutual Fund,SIP Growth,Medium,42550,8%
+76,218,Stocks,Bluechip Basket,High,17947,13%
+77,188,Gold,Digital Gold,Medium,97029,4%
+78,218,ETF,Index ETF,High,83013,16%
+79,69,Stocks,Bluechip Basket,Medium,4639,18%
+80,184,ETF,Index ETF,Low,91205,16%
+81,278,Bonds,Govt Bond,Low,97084,5%
+82,48,Bonds,Govt Bond,Medium,16342,7%
+83,55,Mutual Fund,SIP Growth,High,62173,18%
+84,214,Stocks,Bluechip Basket,High,62674,18%
+85,216,Bonds,Govt Bond,High,29363,18%
+86,61,Mutual Fund,SIP Growth,High,39676,11%
+87,268,ETF,Index ETF,Medium,71210,7%
+88,147,Stocks,Bluechip Basket,Medium,14072,15%
+89,84,Gold,Digital Gold,High,30173,11%
+90,31,Gold,Digital Gold,High,68629,18%
+91,171,Bonds,Govt Bond,High,69950,7%
+92,42,Fixed Deposit,Secure FD,Low,15053,18%
+93,13,Mutual Fund,SIP Growth,Low,82139,16%
+94,244,Bonds,Govt Bond,Low,98163,17%
+95,112,Mutual Fund,SIP Growth,High,87873,16%
+96,184,ETF,Index ETF,High,35197,12%
+97,72,Bonds,Govt Bond,Medium,89561,6%
+98,235,Mutual Fund,SIP Growth,Medium,40982,8%
+99,126,Gold,Digital Gold,Medium,42061,8%
+100,163,Stocks,Bluechip Basket,High,79355,10%
+101,27,Bonds,Govt Bond,Medium,8338,10%
+102,167,Mutual Fund,SIP Growth,High,63314,16%
+103,147,Stocks,Bluechip Basket,High,72028,4%
+104,247,Bonds,Govt Bond,Low,68012,13%
+105,129,Bonds,Govt Bond,High,61348,6%
+106,290,Fixed Deposit,Secure FD,Low,17608,6%
+107,26,Gold,Digital Gold,Low,45507,6%
+108,205,Gold,Digital Gold,Medium,80467,6%
+109,265,Fixed Deposit,Secure FD,Medium,63941,12%
+110,115,Fixed Deposit,Secure FD,Low,67735,11%
+111,86,Fixed Deposit,Secure FD,High,24067,12%
+112,260,Stocks,Bluechip Basket,Medium,37410,7%
+113,298,Fixed Deposit,Secure FD,High,65221,6%
+114,287,Stocks,Bluechip Basket,High,83013,12%
+115,77,Bonds,Govt Bond,Medium,33542,11%
+116,181,Mutual Fund,SIP Growth,Medium,73128,8%
+117,203,Stocks,Bluechip Basket,Medium,91609,18%
+118,252,Mutual Fund,SIP Growth,High,97625,14%
+119,185,Stocks,Bluechip Basket,High,78805,8%
+120,193,Bonds,Govt Bond,Low,7431,10%
+121,285,Fixed Deposit,Secure FD,Medium,81620,16%
+122,1,Fixed Deposit,Secure FD,Medium,41993,5%
+123,229,ETF,Index ETF,High,57848,7%
+124,79,Gold,Digital Gold,High,20048,5%
+125,122,Fixed Deposit,Secure FD,Medium,28128,15%
+126,166,ETF,Index ETF,Low,93590,9%
+127,221,Bonds,Govt Bond,Medium,5749,6%
+128,143,Fixed Deposit,Secure FD,High,44414,12%
+129,197,Fixed Deposit,Secure FD,Low,22391,8%
+130,234,ETF,Index ETF,High,16115,15%
+131,25,Bonds,Govt Bond,Medium,78257,14%
+132,74,Stocks,Bluechip Basket,Medium,74738,6%
+133,180,ETF,Index ETF,Low,51817,11%
+134,72,Gold,Digital Gold,Medium,99850,18%
+135,280,Bonds,Govt Bond,High,86871,7%
+136,207,ETF,Index ETF,High,77988,10%
+137,140,Fixed Deposit,Secure FD,Medium,15215,18%
+138,126,Mutual Fund,SIP Growth,Low,26431,13%
+139,113,ETF,Index ETF,Low,13099,16%
+140,45,Fixed Deposit,Secure FD,Medium,29356,9%
+141,21,Stocks,Bluechip Basket,High,58757,4%
+142,218,Fixed Deposit,Secure FD,Low,4196,18%
+143,289,Fixed Deposit,Secure FD,Low,55434,17%
+144,46,Bonds,Govt Bond,Low,92453,7%
+145,199,ETF,Index ETF,Low,12852,7%
+146,139,Fixed Deposit,Secure FD,Medium,23586,10%
+147,93,Bonds,Govt Bond,High,83999,10%
+148,60,ETF,Index ETF,High,96940,10%
+149,18,Mutual Fund,SIP Growth,Low,80845,7%
+150,264,Gold,Digital Gold,Medium,19314,16%
+151,242,Stocks,Bluechip Basket,High,13860,13%
+152,26,Fixed Deposit,Secure FD,High,86415,17%
+153,266,Gold,Digital Gold,Medium,29255,6%
+154,98,ETF,Index ETF,High,21236,10%
+155,282,Bonds,Govt Bond,High,73674,8%
+156,97,Mutual Fund,SIP Growth,Low,92939,16%
+157,277,Fixed Deposit,Secure FD,Medium,38927,10%
+158,101,Stocks,Bluechip Basket,Medium,31515,18%
+159,102,ETF,Index ETF,Medium,38811,10%
+160,96,ETF,Index ETF,Medium,38305,15%
+161,150,Fixed Deposit,Secure FD,High,55008,8%
+162,78,Fixed Deposit,Secure FD,High,39073,8%
+163,128,Bonds,Govt Bond,Medium,23548,9%
+164,221,Bonds,Govt Bond,Low,23766,9%
+165,232,Fixed Deposit,Secure FD,High,20281,6%
+166,133,Gold,Digital Gold,High,30694,6%
+167,18,Gold,Digital Gold,Medium,64760,4%
+168,153,Stocks,Bluechip Basket,Low,29985,14%
+169,109,Fixed Deposit,Secure FD,Low,48752,18%
+170,153,ETF,Index ETF,Medium,686,16%
+171,189,ETF,Index ETF,High,45504,6%
+172,170,Stocks,Bluechip Basket,High,3420,7%
+173,64,Bonds,Govt Bond,Medium,20643,11%
+174,70,Fixed Deposit,Secure FD,Low,59788,13%
+175,134,ETF,Index ETF,Low,93333,14%
+176,280,Fixed Deposit,Secure FD,High,66928,14%
+177,51,Fixed Deposit,Secure FD,Medium,99209,6%
+178,19,Gold,Digital Gold,High,3271,7%
+179,22,Gold,Digital Gold,High,75754,5%
+180,242,ETF,Index ETF,Medium,49934,9%
+181,178,ETF,Index ETF,High,70153,14%
+182,167,Mutual Fund,SIP Growth,High,39378,14%
+183,55,Bonds,Govt Bond,Medium,7758,17%
+184,221,Bonds,Govt Bond,Medium,94478,4%
+185,176,ETF,Index ETF,Low,32806,6%
+186,232,Fixed Deposit,Secure FD,High,24328,17%
+187,275,Bonds,Govt Bond,Low,29014,9%
+188,9,Fixed Deposit,Secure FD,High,10025,4%
+189,59,Mutual Fund,SIP Growth,Low,14549,16%
+190,27,Mutual Fund,SIP Growth,Low,61354,17%
+191,142,Bonds,Govt Bond,High,65469,6%
+192,47,Fixed Deposit,Secure FD,Medium,37391,10%
+193,95,Mutual Fund,SIP Growth,High,17416,7%
+194,40,Fixed Deposit,Secure FD,Medium,51561,13%
+195,79,Fixed Deposit,Secure FD,Medium,17358,17%
+196,186,ETF,Index ETF,Low,36265,6%
+197,257,Fixed Deposit,Secure FD,Medium,78270,18%
+198,210,Stocks,Bluechip Basket,Low,56299,17%
+199,127,Fixed Deposit,Secure FD,Medium,23806,15%
+200,247,Gold,Digital Gold,Medium,67678,6%
+201,136,Gold,Digital Gold,Medium,23423,18%
+202,293,ETF,Index ETF,High,96415,9%
+203,39,Bonds,Govt Bond,Low,97913,4%
+204,278,Mutual Fund,SIP Growth,Low,51888,8%
+205,115,Fixed Deposit,Secure FD,Medium,1814,6%
+206,3,Stocks,Bluechip Basket,High,59861,15%
+207,67,ETF,Index ETF,High,3912,17%
+208,140,Mutual Fund,SIP Growth,High,61506,14%
+209,171,Bonds,Govt Bond,Low,39615,10%
+210,144,Stocks,Bluechip Basket,Low,77429,11%
+211,88,Gold,Digital Gold,Low,68200,9%
+212,179,ETF,Index ETF,High,21900,17%
+213,172,Fixed Deposit,Secure FD,High,2950,11%
+214,55,Gold,Digital Gold,Medium,58902,14%
+215,282,Stocks,Bluechip Basket,High,65583,11%
+216,16,Bonds,Govt Bond,High,47274,4%
+217,41,Bonds,Govt Bond,High,48062,10%
+218,48,ETF,Index ETF,Low,73240,11%
+219,50,Stocks,Bluechip Basket,Medium,65821,4%
+220,148,Mutual Fund,SIP Growth,High,61324,12%
+221,189,Bonds,Govt Bond,Medium,9430,13%
+222,121,Gold,Digital Gold,High,4363,12%
+223,65,ETF,Index ETF,High,22845,11%
+224,144,ETF,Index ETF,Low,63330,10%
+225,211,Bonds,Govt Bond,Low,63753,13%
+226,66,Stocks,Bluechip Basket,Low,49593,10%
+227,291,ETF,Index ETF,Low,34748,6%
+228,14,ETF,Index ETF,Medium,20927,18%
+229,180,Mutual Fund,SIP Growth,High,40066,8%
+230,243,Stocks,Bluechip Basket,Medium,32622,7%
+231,32,Stocks,Bluechip Basket,Medium,77113,4%
+232,5,Stocks,Bluechip Basket,Low,8211,13%
+233,185,Mutual Fund,SIP Growth,Low,79067,12%
+234,34,Gold,Digital Gold,High,82394,17%
+235,280,ETF,Index ETF,Low,72058,6%
+236,126,Gold,Digital Gold,High,20877,12%
+237,147,Mutual Fund,SIP Growth,Low,7541,18%
+238,217,Stocks,Bluechip Basket,Medium,77902,16%
+239,201,Fixed Deposit,Secure FD,Medium,95156,17%
+240,140,Gold,Digital Gold,Medium,83815,16%
+241,138,Mutual Fund,SIP Growth,High,23536,5%
+242,68,Mutual Fund,SIP Growth,Low,4442,8%
+243,147,Gold,Digital Gold,Low,51440,15%
+244,105,Stocks,Bluechip Basket,High,46172,15%
+245,89,Stocks,Bluechip Basket,Medium,56262,6%
+246,200,Stocks,Bluechip Basket,High,22536,11%
+247,75,Mutual Fund,SIP Growth,Medium,17350,10%
+248,288,Gold,Digital Gold,High,81912,11%
+249,283,ETF,Index ETF,High,52807,4%
+250,216,Fixed Deposit,Secure FD,Medium,76800,11%
+251,219,Fixed Deposit,Secure FD,Medium,10675,6%
+252,47,Bonds,Govt Bond,Low,4370,13%
+253,16,ETF,Index ETF,Medium,82179,7%
+254,95,ETF,Index ETF,Medium,26613,18%
+255,60,ETF,Index ETF,High,56281,6%
+256,226,Gold,Digital Gold,Medium,50058,8%
+257,113,Stocks,Bluechip Basket,High,68253,13%
+258,251,Fixed Deposit,Secure FD,Low,88378,8%
+259,274,ETF,Index ETF,Low,43232,6%
+260,196,Bonds,Govt Bond,Low,79637,14%
+261,96,Mutual Fund,SIP Growth,Low,38858,6%
+262,53,Mutual Fund,SIP Growth,High,88359,10%
+263,154,Fixed Deposit,Secure FD,Medium,39595,7%
+264,1,Fixed Deposit,Secure FD,Medium,35786,4%
+265,219,Bonds,Govt Bond,Low,96406,8%
+266,224,Bonds,Govt Bond,Low,64334,10%
+267,71,Mutual Fund,SIP Growth,Low,13698,8%
+268,234,Mutual Fund,SIP Growth,Medium,37135,10%
+269,140,Fixed Deposit,Secure FD,Low,99190,4%
+270,58,Stocks,Bluechip Basket,High,20280,12%
+271,290,Bonds,Govt Bond,Low,48756,6%
+272,123,Gold,Digital Gold,High,81624,6%
+273,269,Gold,Digital Gold,Low,4142,18%
+274,268,ETF,Index ETF,Low,46850,17%
+275,300,Gold,Digital Gold,Medium,34030,12%
+276,295,Gold,Digital Gold,Low,92701,10%
+277,169,Gold,Digital Gold,High,57541,15%
+278,193,Bonds,Govt Bond,High,83044,14%
+279,245,Gold,Digital Gold,High,98661,9%
+280,270,Fixed Deposit,Secure FD,Medium,23883,6%
+281,14,Fixed Deposit,Secure FD,Low,56601,11%
+282,123,Mutual Fund,SIP Growth,High,63026,16%
+283,118,Gold,Digital Gold,Low,7463,12%
+284,132,ETF,Index ETF,Medium,70045,7%
+285,9,Mutual Fund,SIP Growth,High,69556,14%
+286,2,Gold,Digital Gold,Low,38057,10%
+287,13,Stocks,Bluechip Basket,Low,12731,13%
+288,204,Mutual Fund,SIP Growth,Medium,39839,11%
+289,226,Bonds,Govt Bond,Medium,62077,10%
+290,143,Gold,Digital Gold,Medium,26238,12%
+291,93,Mutual Fund,SIP Growth,High,85784,4%
+292,292,Bonds,Govt Bond,Medium,95069,14%
+293,132,ETF,Index ETF,Medium,89870,13%
+294,121,ETF,Index ETF,High,50283,15%
+295,179,Mutual Fund,SIP Growth,Low,75297,5%
+296,76,Stocks,Bluechip Basket,High,20203,18%
+297,146,Bonds,Govt Bond,Medium,31350,13%
+298,113,ETF,Index ETF,Low,28292,17%
+299,249,Stocks,Bluechip Basket,High,68799,14%
+300,125,Gold,Digital Gold,High,37464,18%
